@@ -11,7 +11,6 @@ namespace Data.Models
         public string Name { get; set; }
         public int ParentID { get; set; }
         [ForeignKey("ParentID")]
-        public Category Parent { get; set; }
-        public List<Category> Children { get; set; }
+        public virtual Category Parent { get; set; }
     }
 }

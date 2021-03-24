@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AkilliTest", "AkilliTest\Ak
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{6A487987-E3C1-4F03-B02C-FC8120C4CB60}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MigrationToolTest", "MigrationToolTest\MigrationToolTest.csproj", "{26C3D515-F8E5-4458-B89B-FB282A408CD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6A487987-E3C1-4F03-B02C-FC8120C4CB60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A487987-E3C1-4F03-B02C-FC8120C4CB60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A487987-E3C1-4F03-B02C-FC8120C4CB60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26C3D515-F8E5-4458-B89B-FB282A408CD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26C3D515-F8E5-4458-B89B-FB282A408CD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26C3D515-F8E5-4458-B89B-FB282A408CD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26C3D515-F8E5-4458-B89B-FB282A408CD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
