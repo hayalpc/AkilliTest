@@ -13,6 +13,9 @@ using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting.WindowsServices;
+using AkilliTest.Data;
+using Microsoft.Extensions.DependencyInjection;
+using Data.Contexts;
 
 namespace AkilliTest
 {
@@ -25,6 +28,8 @@ namespace AkilliTest
             bool isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
 
             var host = CreateHostBuilder(args).Build();
+
+            SeedDatabase(host);
 
             if (isWindows && isService)
                 host.RunAsService();
@@ -53,7 +58,6 @@ namespace AkilliTest
             ServicePointManager.UseNagleAlgorithm = false;
             ServicePointManager.DnsRefreshTimeout = 60 * 10 * 1000;
 
-   
             AppConfigHelper.ApiUrl = webSettings.Urls;
 
             var host = new WebHostBuilder()
@@ -71,6 +75,7 @@ namespace AkilliTest
 
                 config.AddJsonFile(appSettingJson);
                 config.AddEnvironmentVariables(prefix: "ASPNETCORE_");
+
             })
             .ConfigureLogging(logging =>
             {
@@ -84,8 +89,26 @@ namespace AkilliTest
             .UseIIS()
             .UseIISIntegration()
             .UseUrls(webSettings.Urls);
-
+            
             return host;
+        }
+
+        private static void SeedDatabase(IWebHost host)
+        {
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                try
+                {
+                    var context = services.GetRequiredService<BaseDbContext>();
+
+                    DBInitializer.Seed(context);
+                }
+                catch (Exception exp)
+                {
+                    throw exp;
+                }
+            }
         }
 
         public static List<string> GetLocalIPv4()
@@ -106,5 +129,6 @@ namespace AkilliTest
             }
             return output;
         }
+
     }
 }

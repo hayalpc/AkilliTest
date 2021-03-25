@@ -19,7 +19,7 @@ namespace Data.Repositories
         }
     }
 
-    public abstract class BaseRepository<Tentity> : IBaseRepository<Tentity>
+    public class BaseRepository<Tentity> : IBaseRepository<Tentity>
         where Tentity : class, IBaseModel
     {
         protected readonly BaseDbContext context;

@@ -9,7 +9,7 @@ namespace Data.Models
     public class Category : BaseModel
     {
         public string Name { get; set; }
-        public int ParentID { get; set; }
+        public int? ParentID { get; set; }
         [ForeignKey("ParentID")]
         public virtual Category Parent { get; set; }
     }

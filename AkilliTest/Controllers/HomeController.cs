@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AkilliTest.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/[action]")]
     [ApiController]
     public class HomeController : ControllerBase
     {
@@ -21,11 +21,18 @@ namespace AkilliTest.Controllers
             this.business = business;
         }
 
+        public OrderStatistics getOrderStatisticsOnDb()
+        {
+            var orders = business.getOrders();
+            return business.getOrderStatistics(orders);
+        }
+
         public OrderStatistics getOrderStatistics(List<Order> orders)
         {
             return business.getOrderStatistics(orders);
         }
 
+        [HttpGet("{categoryID}")]
         public List<Product> getProductsOfCategoryAndDescendants(int categoryID)
         {
             return business.getProductsOfCategoryAndDescendants(categoryID);

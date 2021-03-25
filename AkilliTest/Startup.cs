@@ -35,16 +35,15 @@ namespace AkilliTest
         {
             services.AddControllers();
 
-
-            services.AddDbContext<BaseDbContext>(options => options.UseSqlServer(GetConnectionString()));
-            services.AddScoped<IBaseUnitOfWork<BaseDbContext>, BaseUnitOfWork<BaseDbContext>>();
-
             services.AddScoped<IAkilliTestBusiness, AkilliTestBusiness>();
 
+            services.AddDbContext<BaseDbContext>(options => options.UseSqlServer(GetConnectionString()));
+            //services.AddScoped<IBaseUnitOfWork<BaseDbContext>, BaseUnitOfWork<BaseDbContext>>();
 
             services.AddScoped<IBaseRepository<Product>, BaseRepository<Product>>();
             services.AddScoped<IBaseRepository<Category>, BaseRepository<Category>>();
-
+            services.AddScoped<IBaseRepository<Order>, BaseRepository<Order>>();
+            services.AddScoped<IBaseRepository<OrderProduct>, BaseRepository<OrderProduct>>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

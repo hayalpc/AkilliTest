@@ -14,7 +14,10 @@ namespace Data.Models
         [Column(TypeName = "decimal(19,4)")]
         public Decimal Price { get; set; }
 
+        [ForeignKey("OrderID")]
         public Order Order { get; set; }
+
+        [ForeignKey("ProductID")]
         public Product Product { get; set; }
     }
 }

@@ -1,6 +1,6 @@
-﻿using Data.Models;
+﻿using AkilliTest.Data;
+using Data.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Data.Contexts
 {

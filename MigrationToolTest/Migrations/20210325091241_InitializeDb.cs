@@ -18,7 +18,7 @@ namespace MigrationToolTest.Migrations
                     UpdateTime = table.Column<DateTime>(nullable: true),
                     UpdateUserId = table.Column<int>(nullable: true),
                     Name = table.Column<string>(nullable: true),
-                    ParentID = table.Column<int>(nullable: false)
+                    ParentID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -28,7 +28,7 @@ namespace MigrationToolTest.Migrations
                         column: x => x.ParentID,
                         principalTable: "Categories",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(

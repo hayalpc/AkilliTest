@@ -11,5 +11,6 @@ namespace AkilliTest.Business.Interfaces
     {
         OrderStatistics getOrderStatistics(List<Order> orders);
         List<Product> getProductsOfCategoryAndDescendants(int categoryID);
+        List<Order> getOrders();
     }
 }

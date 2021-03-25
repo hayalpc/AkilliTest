@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MigrationToolTest.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    [Migration("20210324215054_InitializeDb")]
-    partial class InitializeDb
+    [Migration("20210325101636_v1")]
+    partial class v1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,7 +37,7 @@ namespace MigrationToolTest.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ParentID")
+                    b.Property<int?>("ParentID")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdateTime")
@@ -136,6 +136,9 @@ namespace MigrationToolTest.Migrations
                     b.Property<int>("CreateUserId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("UpdateTime")
                         .HasColumnType("datetime2");
 
@@ -153,9 +156,7 @@ namespace MigrationToolTest.Migrations
                 {
                     b.HasOne("Data.Models.Category", "Parent")
                         .WithMany()
-                        .HasForeignKey("ParentID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ParentID");
                 });
 
             modelBuilder.Entity("Data.Models.OrderProduct", b =>
